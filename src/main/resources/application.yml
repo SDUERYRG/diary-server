@@ -1,0 +1,43 @@
+
+server:
+  # 端口
+  port: 4001
+  servlet:
+    # 项目名称
+    context-path : /diary-server
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    # smtp:发送邮件 qq:QQ邮箱
+    host: smtp.qq.com
+    # 发送者账号
+    username: 1941456753@qq.com
+    # 授权码
+    password: jfyczutwurgabbee   # 请输入自己的授权码
+    # 开启加密验证
+#    properties.mail.smtp.ssl.enable: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+jetcache:
+  #  statIntervalMinutes: 30  #查看缓存统计报表(分钟)
+  local: #本地方案
+    default:
+      type: linkedhasmap
+      #键类型转换器，如果键为对象则转为json字符串
+      keyConvertor: fastjson
+  remote: #远程方案 使用redis
+    default:  #area不指定时默认用这个
+      type: redis
+      # 缓存存储CURD数据时加下三行
+      keyConvertor: fastjson
+      valueEncode: java
+      valueDecode: java
+      host: 47.121.198.180
+      port: 6379
+      poolconfig:
+        maxTotal: 50  # 最大连接数
