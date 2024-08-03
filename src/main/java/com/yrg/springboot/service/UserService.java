@@ -33,7 +33,7 @@ public interface UserService extends IService<User> {
         * @Date 2024/7/19 15:33
         */
         User userAuthentication(User user);
-
+        String getPower(String account);
         /**
         * 判断账号是否重复
         *

@@ -30,19 +30,25 @@ public class LoginController {
      */
     @PostMapping("/login")
     public Result login(@RequestBody User user, @RequestParam(required = false) String power, HttpServletRequest request) {
+        power=user.getPower();
+        System.out.println("开始登陆，user："+user+"power:"+power);
         User currentUser = userService.userAuthentication(user);
         if (currentUser == null)
             return Result.error(ResultCode.USER_LOGIN_ERROR.code(), ResultCode.USER_LOGIN_ERROR.message()); //账号或密码错误
         //对数据库二次加密的密码解密
         String jmPassword = MD5.md5MinusSalt(currentUser.getPassword());
+        System.out.println("数据库密码"+jmPassword);
         //前端密码加密
         String password = DigestUtils.md5Hex(user.getPassword());
+        System.out.println("前端密码"+password);
         if(!jmPassword.equals(password)){
             //密码错误
             return Result.error(ResultCode.USER_LOGIN_ERROR.code(), ResultCode.USER_LOGIN_ERROR.message()); //账号或密码错误
         }
         //是否是管理员登录
-        if (!power.equals("user"))
+        System.out.println("power:"+power);
+        System.out.println("currentUser.getPower():"+currentUser.getPower());
+        if (!currentUser.getPower().equals("用户"))
             if (!currentUser.getPower().equals("管理员")) {
                 return Result.error(ResultCode.NO_LOGIN_PERMISSION.code(), ResultCode.NO_LOGIN_PERMISSION.message());  //没有登陆权限
             }

@@ -33,6 +33,10 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Value("D:/txImg")
     private String txImgPath;
 
+    @Override
+    public String getPower(String account) {
+        return userDao.getPower(account);
+    }
     /**
      * 分页查询
      *

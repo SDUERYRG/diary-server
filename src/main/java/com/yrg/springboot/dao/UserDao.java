@@ -38,7 +38,7 @@ public interface UserDao extends BaseMapper<User>{
      * @Author yrg
      * @Date 2024/7/19 15:40
      */
-    @Select("SELECT * FROM user where account = #{account}")
+    @Select("SELECT * FROM user_table where account = #{account}")
     User userAuthentication(User user);
     /**
      * 判断账号是否重复
@@ -58,6 +58,8 @@ public interface UserDao extends BaseMapper<User>{
     @Insert("insert into user_table(userName,account,password,email,introduce) values(#{userName},#{account},#{password},#{email},#{introduce})")
     Integer userRegister(User user);
 
+    @Select("select power from user_table where account = #{account}")
+    String getPower(String account);
     /**
      * (忘记密码)修改密码
      *
