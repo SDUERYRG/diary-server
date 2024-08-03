@@ -6,6 +6,8 @@ import com.yrg.springboot.entity.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 public interface UserService extends IService<User> {
 
         /**
@@ -64,4 +66,12 @@ public interface UserService extends IService<User> {
          * @Date 2024/7/19 16:02
          */
         Integer modifyPassword(User user);
+        /**
+         * 查询全部用户
+         *
+         * @Author yrg
+         * @Date 2024/8/3 15:56
+         */
+        public IPage<User> getAllUsersPage(int current, int pageSize) ;
+
 }

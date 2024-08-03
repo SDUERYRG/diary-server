@@ -68,4 +68,12 @@ public interface UserDao extends BaseMapper<User>{
      */
     @Update("update user_table set password = #{password} where account = #{account}")
     Integer modifyPassword(User user);
+    /**
+     * 获取所有用户
+     *
+     * @Author yrg
+     * @Date 2024/8/3 15:05
+     */
+    @Select("select * from user_table")
+    List<User> getAllUser();
 }

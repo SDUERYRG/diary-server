@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -156,4 +157,12 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
         Integer integer = userDao.modifyPassword(user);
         return integer;
     }
+    public IPage<User> getAllUsersPage(int current, int pageSize) {
+        Page<User> page = new Page<>(current, pageSize);
+        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+        // 不添加任何查询条件，查询所有用户
+        userDao.selectPage(page, lqw);
+        return page;
+    }
+
 }
