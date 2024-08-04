@@ -50,7 +50,15 @@ public class UserController {
         return new Result(true, page);
     }
 
-
+    @GetMapping("/search/{current}/{pageSize}")
+    @ResponseBody
+    public Result searchUsers(@PathVariable int current, @PathVariable int pageSize, @RequestParam String keyword) {
+        System.out.println("搜索关键字："+keyword);
+        if (keyword == null || keyword.equals(""))
+            return getAllUsersPage(current, pageSize);
+        IPage<User> users = userService.searchUsers(current, pageSize, keyword);
+        return new Result(true, users);
+    }
     @GetMapping("/{userId}")
     @ResponseBody
     @Transactional(propagation = Propagation.SUPPORTS)
@@ -62,10 +70,11 @@ public class UserController {
             return Result.error();
     }
 
-    @PutMapping
+    @PutMapping("/updateUser")
     @ResponseBody
     @Transactional
     public Result updateUser(@RequestBody User user) {
+        System.out.println("修改用户："+user);
         User oldUser = userService.getById(user.getUserId());
         //如果密码没更改
         if(!user.getPassword().equals(oldUser.getPassword())){
@@ -78,10 +87,11 @@ public class UserController {
             return Result.error(ResultCode.ERROR.code(), "修改失败(＞﹏＜)");
     }
 
-    @PostMapping
+    @PostMapping("/addUser")
     @ResponseBody
     @Transactional
     public Result addUser(@RequestBody User user) {
+        System.out.println("添加用户："+user);
         User byAccount = userService.getByAccount(user.getAccount());
         if (byAccount != null)
             throw new MyException(ResultCode.USER_HAS_EXISTED.code(), ResultCode.USER_HAS_EXISTED.message());
@@ -97,6 +107,7 @@ public class UserController {
     @ResponseBody
     @Transactional
     public Result delUserById(@PathVariable String userId) {
+        System.out.println("开始删除"+userId);
         if (userService.removeById(userId))
             return Result.success(ResultCode.SUCCESS.code(), "删除成功(●'◡'●)");
         else

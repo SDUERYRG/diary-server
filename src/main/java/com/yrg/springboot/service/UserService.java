@@ -18,7 +18,9 @@ public interface UserService extends IService<User> {
         */
         IPage<User> getPage(int current, int pageSize);
 
-        IPage<User> getPage(int current, int pageSize, User user);   //方法重载
+        IPage<User> getPage(int current, int pageSize, User user);
+
+        IPage<User> searchUsers(int current, int pageSize, String keyword);
 
         /**
         * 修改头像

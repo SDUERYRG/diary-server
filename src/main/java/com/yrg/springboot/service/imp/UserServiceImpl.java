@@ -66,6 +66,17 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
         userDao.selectPage(page, lqw);
         return page;
     }
+
+    @Override
+    public IPage<User> searchUsers(int current, int pageSize, String keyword) {
+        Page<User> page = new Page<>(current, pageSize);
+        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+        lqw.like(keyword != null, User::getUserName, keyword)
+                .or().like(keyword != null, User::getAccount, keyword)
+                .or().like(keyword != null, User::getEmail, keyword);
+        userDao.selectPage(page, lqw);
+        return page;
+    }
     /**
      * 修改头像
      *

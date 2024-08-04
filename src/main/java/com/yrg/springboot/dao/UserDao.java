@@ -23,6 +23,8 @@ public interface UserDao extends BaseMapper<User>{
     @Select("select * from user where userId=#{userId}")
     List<User> selectByUserId(Integer userId);
 
+    @Select("select * from user where account=#{str} or userName=#{str} or email=#{str}")
+    List<User> selectByStr(String str);
     /**
      * 修改用户头像
      *
