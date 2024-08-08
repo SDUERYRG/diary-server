@@ -47,10 +47,10 @@ public enum ResultCode {
      * @Author yrg
      */
     DATA_NOT_EXIST(40001, "操作失败,该数据不存在"),
-    FLOWER_ALREADY_EXISTS(40002, "已存在该鲜花名称，换一个(。>︿<)_θ"),
+    ITEM_ALREADY_EXISTS(40002, "已存在该鲜花名称，换一个(。>︿<)_θ"),
     ADD_ORDER_ERROR(40003, "添加订单异常,请稍后再试"),
     DATE_ERROR(40004, "操作失败,日期数据有误"),
-    FLOWER_IS_IN_SHOPPINGCART(40005, "购物车中已存在该鲜花啦￣^￣");
+    Item_IS_IN_SHOPPINGCART(40005, "购物车中已存在该鲜花啦￣^￣");
 
     private Integer code;
     private String message;

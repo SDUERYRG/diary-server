@@ -41,3 +41,9 @@ jetcache:
       port: 6379
       poolconfig:
         maxTotal: 50  # 最大连接数
+page: #自定义属性
+  itemImg: D:\photos\itemImg\  # 鲜花图片存放路径
+  txImg: D:\photos\txImg\   # 用户头像存放路径
+  pageImg: D:\photos\pageImg\    # 前台展示页面静态图片存放路径
+  verifyImg: D:\photos\verifyImg\   # 验证码滑块图片存放路径
+  noticeImg: D:\photos\noticeImg\    # 公告图片存放路径
