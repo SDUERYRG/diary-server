@@ -27,7 +27,8 @@ public interface ItemDao extends BaseMapper<Item> {
      * @Author yrg
      * @Date 2024/8/7 22:13
      */
-    @Select("select itemId from item_table where itemName = #{itemName}")
+    @Select("select itemId from item_table where item_name = #{itemName}")
+
     String selectByItemName(String itemName);
 
 

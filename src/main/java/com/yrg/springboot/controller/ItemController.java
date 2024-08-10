@@ -58,6 +58,7 @@ public class ItemController {
         IPage<Item> page = itemService.getPage(current, pageSize, item);
         if (current > page.getPages()) //当前页大于总页数
             page = itemService.getPage((int) page.getPages(), pageSize, item);
+        System.out.println("查询商品成功");
         return new Result(true, page);
     }
 
@@ -92,11 +93,14 @@ public class ItemController {
             return Result.error(ResultCode.ERROR.code(), "修改失败(๑＞ ＜)☆");
     }
 
-    @DeleteMapping("/{itemId}")
+    @DeleteMapping("/{itemId}/{picture}")
     @Transactional
-    public Result delItemById(@PathVariable String itemId, @RequestParam(required = false) String picture) {
-        if (picture != null && !picture.equals("")) {
+    public Result delItemById(@PathVariable String itemId, @PathVariable String picture) {
+
+//        if (picture != null && !picture.equals("")) {
             if (itemService.removeById(itemId)) {
+                System.out.println("删除商品");
+                System.out.println(imgPath + picture);
                 File file = new File(imgPath + picture);
                 if (file.exists())
                     file.delete();
@@ -104,7 +108,7 @@ public class ItemController {
                 itemStateService.delItemStateByItemId(itemId);
                 return Result.success(ResultCode.SUCCESS.code(), "删除成功(。・・)ノ");
             }
-        }
+//        }
         return Result.error(ResultCode.ERROR.code(), "删除失败ಠಿ_ಠ");
     }
 
