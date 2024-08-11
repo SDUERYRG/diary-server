@@ -31,7 +31,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     @Resource
     private UserDao userDao;
 
-    @Value("D:/txImg")
+    @Value("D:/photos/txImg")
     private String txImgPath;
 
     @Override

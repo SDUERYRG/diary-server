@@ -79,7 +79,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     @Override
     public Boolean addItem(MultipartFile file, Item item) {
         try {
-            String fileName = UUID.randomUUID() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            String fileName = "photo"+item.getItemId() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
             item.setPicture(fileName);
             file.transferTo(new File(imgPath + fileName));
         } catch (IOException e) {
@@ -96,11 +96,12 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
             itemState.setXinPin(item.isXpFlag() ? 1 : 0);
             itemState.setItemId(item.getItemId());
             itemState.setItemId(itemId);
-            if (itemStateService.save(itemState)) {
-                return true;
-            } else {
-                throw new MyException(ResultCode.ERROR.code(), "鲜花状态添加异常");
-            }
+            return true;
+//            if (itemStateService.save(itemState)) {
+//                return true;
+//            } else {
+//                throw new MyException(ResultCode.ERROR.code(), "鲜花状态添加异常");
+//            }
         }
     }
 
@@ -109,17 +110,20 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
         String fileName = "";
         if (file != null) {
             try {
-                fileName = UUID.randomUUID() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+                System.out.println("修改图片");
+                fileName = "photo" + item.getItemId()+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
                 File imgFile = new File(imgPath + item.getPicture());
                 if (imgFile.exists()) {
                     imgFile.delete();
                 }
                 file.transferTo(new File(imgPath + fileName));
+
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new MyException(ResultCode.FILE_UPLOAD_FAIL.code(), ResultCode.FILE_UPLOAD_FAIL.message());
             }
             item.setPicture(fileName);
+            System.out.println("修改图片成功");
         }
         if (itemDao.updateById(item) > 0) {
             //更改鲜花状态信息
@@ -128,10 +132,10 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
             itemState.setTuiJian(item.isTjFlag() ? 1 : 0);
             itemState.setXinPin(item.isXpFlag() ? 1 : 0);
             itemState.setItemId(item.getItemId());
-            if (itemStateService.updateByItemId(itemState))
-                return true;
-            else
-                return false;
+//            if (itemStateService.updateByItemId(itemState))
+//                return true;
+//            else
+//                return false;
         }
         return true;
     }
@@ -204,5 +208,13 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     @Override
     public boolean updateItemStock(String itemId, Integer quantity) {
         return itemDao.updateItemStock(itemId, quantity);
+    }
+    @Override
+    public IPage<Item> searchItem(int current, int pageSize, String keyword) {
+        IPage<Item> page = new Page<>(current, pageSize);
+        LambdaQueryWrapper<Item> lqw = new LambdaQueryWrapper<>();
+        lqw.like(Item::getItemName, keyword);
+        itemDao.selectPage(page, lqw);
+        return page;
     }
 }

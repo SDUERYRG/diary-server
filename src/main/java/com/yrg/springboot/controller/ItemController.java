@@ -62,6 +62,16 @@ public class ItemController {
         return new Result(true, page);
     }
 
+    @GetMapping("/search/{current}/{pageSize}")
+    @ResponseBody
+    public Result searchItem(@PathVariable int current, @PathVariable int pageSize, @RequestParam String keyword) {
+        System.out.println("搜索关键字："+keyword);
+        if (keyword == null || keyword.equals(""))
+            return getAllItem(current, pageSize, null);
+        IPage<Item> items = itemService.searchItem(current, pageSize, keyword);
+        return new Result(true, items);
+    }
+
     /**
      * 获取item状态
      *
@@ -84,9 +94,10 @@ public class ItemController {
         }
     }
 
-    @PutMapping
+    @PutMapping("/updateItem")
     @Transactional
     public Result updateItem(MultipartFile file, Item item) {
+        System.out.println("修改商品");
         if (itemService.editItem(file, item))
             return Result.success(ResultCode.SUCCESS.code(), "修改成功ʕ•ᴥ•ʔ");
         else
@@ -97,7 +108,7 @@ public class ItemController {
     @Transactional
     public Result delItemById(@PathVariable String itemId, @PathVariable String picture) {
 
-//        if (picture != null && !picture.equals("")) {
+        if (picture != null && !picture.equals("")) {
             if (itemService.removeById(itemId)) {
                 System.out.println("删除商品");
                 System.out.println(imgPath + picture);
@@ -108,7 +119,7 @@ public class ItemController {
                 itemStateService.delItemStateByItemId(itemId);
                 return Result.success(ResultCode.SUCCESS.code(), "删除成功(。・・)ノ");
             }
-//        }
+        }
         return Result.error(ResultCode.ERROR.code(), "删除失败ಠಿ_ಠ");
     }
 

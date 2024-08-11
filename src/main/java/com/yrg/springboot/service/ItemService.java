@@ -34,6 +34,13 @@ public interface ItemService extends IService<Item> {
     Boolean addItem(MultipartFile file, Item item);
 
     /**
+     * 搜索商品
+     *
+     * @Author yrg
+     * @Date 2024/8/11 18:52
+     */
+    IPage<Item> searchItem(int current, int pageSize, String keyword);
+    /**
      * 修改鲜花
      *
      * @Author liuzhi
