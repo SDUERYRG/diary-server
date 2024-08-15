@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/3 20:20
  * 用户信息表
  * 用户表不能用:user，因为与关键字冲突

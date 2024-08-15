@@ -16,7 +16,7 @@ public class ItemStateServiceImp extends ServiceImpl<ItemStateDao, ItemState> im
     /**
      * 鲜花状态获取
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 16:17
      */
     @Override
@@ -27,7 +27,7 @@ public class ItemStateServiceImp extends ServiceImpl<ItemStateDao, ItemState> im
     /**
      * 鲜花状态修改
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 15:56
      */
     @Override
@@ -38,7 +38,7 @@ public class ItemStateServiceImp extends ServiceImpl<ItemStateDao, ItemState> im
     /**
      * 删除鲜花状态信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 16:11
      */
     @Override

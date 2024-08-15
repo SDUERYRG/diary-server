@@ -19,7 +19,7 @@ public class SortServiceImpl extends ServiceImpl<SortDao, Sort> implements SortS
     /**
      * 鲜花表、鲜花分类表，两表查询
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 14:20
      */
     @Override
@@ -31,7 +31,7 @@ public class SortServiceImpl extends ServiceImpl<SortDao, Sort> implements SortS
     /**
      * 查询还没有分类的鲜花id
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 17:06
      */
     @Override
@@ -42,7 +42,7 @@ public class SortServiceImpl extends ServiceImpl<SortDao, Sort> implements SortS
     /**
      * 可以分类的鲜花名称
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 18:28
      */
     @Override
@@ -53,7 +53,7 @@ public class SortServiceImpl extends ServiceImpl<SortDao, Sort> implements SortS
     /**
      * 根据itemID删除分类
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/27 17:26
      */
     @Override

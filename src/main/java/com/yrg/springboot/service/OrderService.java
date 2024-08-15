@@ -13,7 +13,7 @@ public interface OrderService extends IService<Order> {
     /**
      * 分页查询
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/5 17:32
      */
     IPage<Order> getPage(int current, int pageSize);
@@ -23,7 +23,7 @@ public interface OrderService extends IService<Order> {
     /**
      * 获取订单历史信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/15 15:58
      */
     OrderHistory getOrderHistory(String orderId);
@@ -31,7 +31,7 @@ public interface OrderService extends IService<Order> {
     /**
      * 获取订单详情
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/3 11:46
      */
     List<OrderDetail> getOrderDetail(String orderId);
@@ -39,7 +39,7 @@ public interface OrderService extends IService<Order> {
     /**
      * 发货
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/7 14:38
      */
     boolean deliverGoods(Order order);
@@ -47,7 +47,7 @@ public interface OrderService extends IService<Order> {
     /**
      * 删除订单及关联表信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/22 12:29
      */
     boolean deleteOrderDetailByOrderNum(String orderNum);
@@ -57,7 +57,7 @@ public interface OrderService extends IService<Order> {
     /**
      * 鲜花销售统计(月份和每月销售金额)
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/11/1 15:35
      */
     List<SalesStatistics> itemSalesStatistics(String year);

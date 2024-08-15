@@ -9,7 +9,7 @@ public interface ItemStateService extends IService<ItemState> {
     /**
      * 鲜花状态获取
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 16:17
      */
     ItemState getItemStateByItemId(String itemId);
@@ -17,7 +17,7 @@ public interface ItemStateService extends IService<ItemState> {
     /**
      * 鲜花状态修改
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 15:56
      */
     boolean updateByItemId(ItemState itemState);
@@ -25,7 +25,7 @@ public interface ItemStateService extends IService<ItemState> {
     /**
      * 删除鲜花状态信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 16:11
      */
     boolean delItemStateByItemId(String itemId);

@@ -22,7 +22,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 发货
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/7 14:38
      */
     boolean deliverGoods(Order order);
@@ -30,7 +30,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 获取订单详情及历史信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/15 15:57
      */
     @Select("select * from order_history where orderId = #{orderId}")
@@ -41,7 +41,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 删除订单详情表中的信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/22 12:29
      */
     @Delete("delete from order_detail where orderNum = #{orderNum}")
@@ -50,7 +50,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 删除订单历史信息表中的信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/22 12:29
      */
     @Delete("delete from order_history where orderId = #{orderId}")
@@ -59,7 +59,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 用户订单签收
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/22 22:14
      */
     @Update("update order_table set receiptTime = #{receiptTime},state = '已签收' where orderId = #{orderId}")
@@ -68,7 +68,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 保存数据到订单详情表
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 21:14
      */
     @Insert("insert into order_detail(detailId,orderNum,itemId,unitPrice,quantity) values(#{detailId},#{orderNum},#{itemId},#{unitPrice},#{quantity})")
@@ -77,7 +77,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 保存数据到订单历史信息表
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 21:18
      */
     @Insert("insert into order_history(orderId,userName,tel,address,beiZhu) values(#{orderId},#{userName},#{tel},#{address},#{beiZhu})")
@@ -86,7 +86,7 @@ public interface OrderDao extends BaseMapper<Order> {
     /**
      * 鲜花销售统计(月份和每月销售金额)
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/11/1 15:24
      */
     @Select("select MONTH(orderTime) as month,sum(price) as price from order_table where YEAR(orderTime) = #{year} GROUP BY MONTH(orderTime)")

@@ -14,7 +14,7 @@ public interface ItemStateDao extends BaseMapper<ItemState> {
     /**
      * 鲜花状态获取
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 16:16
      */
     @Select("select tuiJian,xinPin,reXiao from item_state where itemId = #{itemId}")
@@ -23,7 +23,7 @@ public interface ItemStateDao extends BaseMapper<ItemState> {
     /**
      * 鲜花状态修改
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 15:55
      */
     @Update("update item_state set tuiJian = #{tuiJian},reXiao = #{reXiao},xinPin = #{xinPin} where itemId = #{itemId}")
@@ -32,7 +32,7 @@ public interface ItemStateDao extends BaseMapper<ItemState> {
     /**
      * 鲜花状态删除
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/19 16:09
      */
     @Delete("delete from item_state where itemId = #{itemId}")

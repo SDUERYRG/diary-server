@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/5 17:14
  * 订单管理相关操作
  */
@@ -31,7 +31,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     /**
      * 分页查询
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/5 17:49
      */
     @Override
@@ -42,7 +42,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     }
 
     /**
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/5 17:48
      * 第一个参数：只有该参数是true时，才将like条件拼接到sql中；本例中，当houseHoldNum字段不为空时，则拼接name字段的like查询条件；
      * 第二个参数：该参数是数据库中的字段名；

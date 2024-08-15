@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 用户订单中心
  *
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/22 9:38
  */
 @RestController
@@ -35,7 +35,7 @@ public class UserOrderController {
 
     /**
      * 获取当前用户的所有订单信息
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/22 9:39
      */
     @GetMapping("/{current}/{pageSize}/{userId}")
@@ -58,7 +58,7 @@ public class UserOrderController {
 
     /**
      * 签收
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/3 15:14
      */
     @GetMapping("/orderReceipt/{orderId}")
@@ -73,7 +73,7 @@ public class UserOrderController {
 
     /**
      * 删除订单信息
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/5 11:19
      */
     @DeleteMapping("/{orderId}/{orderNum}")

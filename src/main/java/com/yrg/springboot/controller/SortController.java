@@ -70,7 +70,7 @@ public class SortController {
 
     /**
      * 批量删除
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/28 17:00
      */
     @DeleteMapping("/delByIdList")
@@ -89,7 +89,7 @@ public class SortController {
 
     /**
      * 可被分类的鲜花名
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/28 10:47
      */
     @GetMapping("/canSortItemName")

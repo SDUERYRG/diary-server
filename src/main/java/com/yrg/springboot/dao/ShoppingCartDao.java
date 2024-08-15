@@ -20,7 +20,7 @@ public interface ShoppingCartDao extends BaseMapper<ShoppingCart> {
     /**
      * 查看当前用户的购物车中有哪些东西
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 13:43
      */
     @Select("SELECT sc.cartId, sc.itemId, i.item_name, sc.userId, u.user_name,sc.quantity " +
@@ -33,7 +33,7 @@ public interface ShoppingCartDao extends BaseMapper<ShoppingCart> {
     /**
      * 查看所有购物车
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 13:43
      */
     @Select("SELECT sc.cartId, sc.itemId, i.item_name, sc.userId, u.user_name,sc.quantity " +
@@ -45,7 +45,7 @@ public interface ShoppingCartDao extends BaseMapper<ShoppingCart> {
     /**
      * 判断当前用户购物车中是否已有该鲜花
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 14:20
      */
     @Select("SELECT * from shoppingCart where itemId = #{itemId} and userId = #{userId}")
@@ -54,7 +54,7 @@ public interface ShoppingCartDao extends BaseMapper<ShoppingCart> {
     /**
      * 移除购物车鲜花
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/10 15:22
      */
     @Delete("delete from shoppingcart where cartId = #{cartId}")

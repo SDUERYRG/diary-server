@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/2 11:57
  * 返回结果的模型类，用于前后端的数据格式同一，也称为前后端数据协议
  */

@@ -36,7 +36,7 @@ public class ItemController {
 
     /**
      * 添加鲜花数据
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/16 14:27
      */
     @PostMapping
@@ -75,7 +75,7 @@ public class ItemController {
     /**
      * 获取item状态
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/27 16:30
      */
     @GetMapping("/itemStatus/{itemId}")
@@ -125,7 +125,7 @@ public class ItemController {
 
     /**
      * 批量删除
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/28 9:16
      */
     @DeleteMapping("/delByIdList")

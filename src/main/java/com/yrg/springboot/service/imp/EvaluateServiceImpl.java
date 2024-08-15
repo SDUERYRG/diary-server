@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 /**
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/7 20:25
  * 评价信息管理相关操作
  */
@@ -33,7 +33,7 @@ public class EvaluateServiceImpl extends ServiceImpl<EvaluateDao, Evaluate> impl
 
     /**
      * 判断用户是否已经评价了该订单的该鲜花
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/26 15:56
      */
     @Transactional(propagation = Propagation.SUPPORTS)
@@ -43,7 +43,7 @@ public class EvaluateServiceImpl extends ServiceImpl<EvaluateDao, Evaluate> impl
 
     /**
      * 查看用户该订单的该鲜花的评价信息
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/27 8:44
      */
     @Transactional(propagation = Propagation.SUPPORTS)

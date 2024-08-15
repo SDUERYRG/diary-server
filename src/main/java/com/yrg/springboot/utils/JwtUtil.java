@@ -18,7 +18,7 @@ public class JwtUtil {
     /**
      * jwt密钥
      */
-    private static final String SECRET = "liuzhi";
+    private static final String SECRET = "yrg";
 
     /**
      * 生成jwt字符串

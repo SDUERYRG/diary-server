@@ -10,7 +10,7 @@ public interface SortService extends IService<Sort> {
     /**
      * 鲜花表、鲜花分类表，两表查询
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 14:20
      */
     Page<Sort> getAll(IPage<Sort> iPage, Sort Sort);
@@ -18,7 +18,7 @@ public interface SortService extends IService<Sort> {
     /**
      * 查询还没有分类的鲜花id
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 17:06
      */
     String[] notSortItemId();
@@ -26,7 +26,7 @@ public interface SortService extends IService<Sort> {
     /**
      * 可以分类的鲜花名称
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 18:28
      */
     String[] canSortItemName(String[] integers);
@@ -34,7 +34,7 @@ public interface SortService extends IService<Sort> {
     /**
      * 根据itemID删除分类
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/27 17:26
      */
     boolean delSortByItemId(String itemId);

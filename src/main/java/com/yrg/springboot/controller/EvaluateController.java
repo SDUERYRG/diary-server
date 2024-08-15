@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/8 10:18
  * 评价信息管理相关操作
  */
@@ -38,7 +38,7 @@ public class EvaluateController {
     }
 
     /**
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/8 19:55
      * 删除评价信息
      */
@@ -54,7 +54,7 @@ public class EvaluateController {
     /**
      * 批量删除
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/3/27 10:45
      */
     @DeleteMapping("/delByIdList")
@@ -74,7 +74,7 @@ public class EvaluateController {
     /**
      * 用户订单页面添加评价信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/11 16:37
      */
     @PostMapping
@@ -93,7 +93,7 @@ public class EvaluateController {
 
     /**
      * 查看用户该订单的该鲜花的评价信息
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/11 17:32
      */
     @PostMapping("/lookEvaluate")

@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * 购物车相关操作
  *
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/23 13:35
  */
 @RestController
@@ -42,7 +42,7 @@ public class ShoppingCartController {
     /**
      * 获取所有数据
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/5 13:48
      */
     @GetMapping("/{current}/{pageSize}/{userId}")
@@ -116,7 +116,7 @@ public class ShoppingCartController {
 
     /**
      * 更改购物车鲜花数量
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/5 13:55
      */
     @PostMapping("/changeItemNum")
@@ -130,7 +130,7 @@ public class ShoppingCartController {
 
     /**
      * 移除购物车鲜花
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/5 14:18
      */
     @DeleteMapping("/delShoppingCartItem/{shoppingCarId}")
@@ -160,7 +160,7 @@ public class ShoppingCartController {
 
     /**
      * 购买
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/10 11:24
      */
     @PostMapping("/pay")
@@ -181,7 +181,7 @@ public class ShoppingCartController {
 
     /**
      * 添加到购物车
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/11 14:50
      */
     @PostMapping("/addToShoppingCart")

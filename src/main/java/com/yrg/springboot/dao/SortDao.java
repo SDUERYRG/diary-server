@@ -15,7 +15,7 @@ public interface SortDao extends BaseMapper<Sort> {
     /**
      * 鲜花表、鲜花分类表，两表查询
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 14:21
      */
     Page<Sort> getAll(IPage<Sort> iPage, Sort sort);
@@ -23,7 +23,7 @@ public interface SortDao extends BaseMapper<Sort> {
     /**
      * 查询还没有分类的鲜花id
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 17:05
      */
     String[] notSortItemId();
@@ -31,7 +31,7 @@ public interface SortDao extends BaseMapper<Sort> {
     /**
      * 可以分类的鲜花名称
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 18:27
      */
     String[] canSortItemName(String[] integers);
@@ -39,7 +39,7 @@ public interface SortDao extends BaseMapper<Sort> {
     /**
      * 删除(removeById用不了？)
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 21:05
      */
     @Delete("delete from item_sort where sortId = #{sortId}")

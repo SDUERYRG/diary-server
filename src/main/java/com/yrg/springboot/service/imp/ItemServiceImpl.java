@@ -46,7 +46,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     }
 
     /**
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/3 20:23
      * 第一个参数：只有该参数是true时，才将like条件拼接到sql中；本例中，当houseHoldNum字段不为空时，则拼接name字段的like查询条件；
      * 第二个参数：该参数是数据库中的字段名；
@@ -68,7 +68,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     /**
      * 根据花名查询鲜花id
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 20:36
      */
     @Override

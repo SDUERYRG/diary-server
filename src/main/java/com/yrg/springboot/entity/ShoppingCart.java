@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 购物车表
  *
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/23 13:32
  */
 @Data

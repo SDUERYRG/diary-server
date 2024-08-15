@@ -10,7 +10,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 分页获取
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/3 20:23
      */
     IPage<Item> getPage(int current, int pageSize, String type, String itemName);
@@ -20,7 +20,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 根据花名查询鲜花id
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/14 20:36
      */
     String selectByItemName(String itemName);
@@ -28,7 +28,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 添加鲜花
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/27 11:23
      */
     Boolean addItem(MultipartFile file, Item item);
@@ -43,7 +43,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 修改鲜花
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/27 11:25
      */
     Boolean editItem(MultipartFile file, Item item);
@@ -51,7 +51,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 前台主页
      *
-     * @Author liuzhi
+     * @Author yrg
      */
     //新品鲜花
     IPage<Item> getNewProduct(int current, int pageSize, String itemName);
@@ -70,7 +70,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 鲜花详情页数据
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/11 11:50
      */
     Item itemDetail(String itemId);
@@ -78,7 +78,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 更改鲜花售出的数量
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/26 13:13
      */
     boolean updateItemSell(String itemId, Integer quantity);
@@ -86,7 +86,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 更新鲜花评分
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/28 12:55
      */
     boolean updateItemScore(String itemId, Float score);
@@ -94,7 +94,7 @@ public interface ItemService extends IService<Item> {
     /**
      * 更新库存数量
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/28 13:40
      */
     boolean updateItemStock(String itemId, Integer quantity);

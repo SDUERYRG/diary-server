@@ -16,7 +16,7 @@ public interface ShoppingCartService extends IService<ShoppingCart> {
     /**
      * 查看当前用户的购物车中有哪些东西
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 13:43
      */
     Page<CartItem> getPage(IPage<CartItem> iPage, String userId);
@@ -32,7 +32,7 @@ public interface ShoppingCartService extends IService<ShoppingCart> {
     /**
      * 查看所有购物车
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 13:43
      */
     Page<CartItem> getPage(IPage<CartItem> iPage);
@@ -40,7 +40,7 @@ public interface ShoppingCartService extends IService<ShoppingCart> {
     /**
      * 购买
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2023/4/10 13:42
      */
     boolean pay(List<Item> itemList, Address address, Float price);
@@ -48,7 +48,7 @@ public interface ShoppingCartService extends IService<ShoppingCart> {
     /**
      * 判断当前用户购物车中是否已有该鲜花
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/23 14:23
      */
     boolean judgeExistence(String itemId, String userId);

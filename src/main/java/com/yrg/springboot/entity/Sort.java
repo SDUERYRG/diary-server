@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * 鲜花分类表
  *
- * @Author liuzhi
+ * @Author yrg
  * @Date 2022/10/14 14:01
  */
 @Data

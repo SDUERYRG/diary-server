@@ -9,7 +9,7 @@ public interface EvaluateService extends IService<Evaluate> {
     /**
      * 多表查询，根据评价表里的用户id和鲜花id查出用户和鲜花信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/7 20:31
      */
     Page<Evaluate> getAll(IPage<Evaluate> iPage, Evaluate evaluate);
@@ -17,7 +17,7 @@ public interface EvaluateService extends IService<Evaluate> {
     /**
      * 判断是否已经登录
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/22 17:49
      */
     Integer isEvaluated(String itemId, String userId, String orderNum);
@@ -25,7 +25,7 @@ public interface EvaluateService extends IService<Evaluate> {
     /**
      * 查看用户该订单的该鲜花的评价信息
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/27 8:43
      */
     Evaluate lookEvaluate(String itemId, String userId, String orderNum);
@@ -33,7 +33,7 @@ public interface EvaluateService extends IService<Evaluate> {
     /**
      * 获取鲜花的平均分
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/28 12:54
      */
     Float getItemScoreAvg(String itemId);

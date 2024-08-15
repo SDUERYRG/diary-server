@@ -133,7 +133,7 @@ public class UserController {
     /**
      * 用户头像修改
      *
-     * @Author liuzhi
+     * @Author yrg
      * @Date 2022/10/10 18:47
      */
     @PostMapping("/changeTx/{userId}")
