@@ -76,4 +76,11 @@ public interface UserService extends IService<User> {
          */
         public IPage<User> getAllUsersPage(int current, int pageSize) ;
 
+        /**
+         * 通过用户名获取用户Id
+         *
+         * @Author yrg
+         * @Date 2024/8/15 16:24
+         */
+        String getUserIdByUserName(String userName);
 }

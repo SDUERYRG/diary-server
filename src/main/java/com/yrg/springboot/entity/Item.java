@@ -40,7 +40,7 @@ public class Item implements Serializable {   //一个类只有实现了Serializ
     @TableField(exist = false)
     private boolean xpFlag;
     @TableField(exist = false)
-    private boolean tjFlag;
+    private boolean tjFlag;//推荐
 
     @TableField(exist = false)
     private String shoppingCartId;

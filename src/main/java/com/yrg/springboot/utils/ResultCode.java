@@ -50,7 +50,7 @@ public enum ResultCode {
     ITEM_ALREADY_EXISTS(40002, "已存在该鲜花名称，换一个(。>︿<)_θ"),
     ADD_ORDER_ERROR(40003, "添加订单异常,请稍后再试"),
     DATE_ERROR(40004, "操作失败,日期数据有误"),
-    Item_IS_IN_SHOPPINGCART(40005, "购物车中已存在该鲜花啦￣^￣");
+    ITEM_IS_IN_SHOPPINGCART(40005, "购物车中已存在该鲜花啦￣^￣");
 
     private Integer code;
     private String message;

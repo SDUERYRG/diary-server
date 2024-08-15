@@ -31,7 +31,7 @@ public interface UserDao extends BaseMapper<User>{
      * @Author yrg
      * @Date 2024/7/19 15:39
      */
-    @Update("update user set txPicture = #{fileName} where userId = #{userId}")
+    @Update("update user_table set tx_picture = #{fileName} where userId = #{userId}")
     boolean changeTx(String userId, String fileName);
 
     /**
@@ -57,7 +57,7 @@ public interface UserDao extends BaseMapper<User>{
      * @Author yrg
      * @Date 2024/7/19 15:41
      */
-    @Insert("insert into user_table(userName,account,password,email,introduce) values(#{userName},#{account},#{password},#{email},#{introduce})")
+    @Insert("insert into user_table(user_name,account,password,email,introduce) values(#{userName},#{account},#{password},#{email},#{introduce})")
     Integer userRegister(User user);
 
     @Select("select power from user_table where account = #{account}")
@@ -70,12 +70,13 @@ public interface UserDao extends BaseMapper<User>{
      */
     @Update("update user_table set password = #{password} where account = #{account}")
     Integer modifyPassword(User user);
+
     /**
-     * 获取所有用户
+     * 通过用户名获取用户Id
      *
      * @Author yrg
-     * @Date 2024/8/3 15:05
+     * @Date 2024/8/15 15:42
      */
-    @Select("select * from user_table")
-    List<User> getAllUser();
+    @Select("select userId from user_table where user_name = #{userName}")
+    String getUserIdByUserName(String userName);
 }

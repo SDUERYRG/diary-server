@@ -176,4 +176,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
         return page;
     }
 
+    @Override
+    public String getUserIdByUserName(String userName){
+        return userDao.getUserIdByUserName(userName);
+    }
 }
