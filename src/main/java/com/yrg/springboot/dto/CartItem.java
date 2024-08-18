@@ -11,4 +11,5 @@ public class CartItem {
     private String userId;
     private String userName;
     private int quantity;
+    private double price;
 }
