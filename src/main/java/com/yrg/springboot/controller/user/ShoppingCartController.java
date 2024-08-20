@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -163,21 +164,50 @@ public class ShoppingCartController {
      * @Author yrg
      * @Date 2023/4/10 11:24
      */
+//    @PostMapping("/pay")
+//    @Transactional
+//    public Result pay(@RequestBody JSONObject jsonObject) {
+//        //JSONObject转实体类
+//        JSONObject addressJo = jsonObject.getJSONObject("address");
+//        Address address = JSONObject.toJavaObject(addressJo, Address.class);
+//        //JSONObject转List
+//        JSONArray itemJa = jsonObject.getJSONArray("itemList");
+//        List<Item> itemList = JSONObject.parseArray(itemJa.toJSONString(), Item.class);
+//        String price = jsonObject.get("price").toString();
+//        if (shoppingCartService.pay(itemList, address, Float.valueOf(price))) {
+//            return Result.success("购买成功");
+//        } else
+//            return Result.error();
+//    }
     @PostMapping("/pay")
     @Transactional
     public Result pay(@RequestBody JSONObject jsonObject) {
-        //JSONObject转实体类
+        // JSONObject转实体类
         JSONObject addressJo = jsonObject.getJSONObject("address");
         Address address = JSONObject.toJavaObject(addressJo, Address.class);
-        //JSONObject转List
-        JSONArray itemJa = jsonObject.getJSONArray("itemList");
-        List<Item> itemList = JSONObject.parseArray(itemJa.toJSONString(), Item.class);
+
+        // JSONObject转List
+        JSONArray itemJa = jsonObject.getJSONArray("itemIdList");
+        List<Integer> itemIdList = JSONObject.parseArray(itemJa.toJSONString(), Integer.class);
+
+        // 初始化 itemList
+        List<Item> itemList = new ArrayList<>();
+        for (Integer itemId : itemIdList) {
+            System.out.println(itemId);
+            Item item = itemService.getById(itemId);
+            System.out.println(item);
+            itemList.add(item);
+        }
+        System.out.println(itemList);
+
         String price = jsonObject.get("price").toString();
         if (shoppingCartService.pay(itemList, address, Float.valueOf(price))) {
             return Result.success("购买成功");
-        } else
+        } else {
             return Result.error();
+        }
     }
+
 
     /**
      * 添加到购物车
@@ -187,10 +217,11 @@ public class ShoppingCartController {
     @PostMapping("/addToShoppingCart")
     @Transactional
     public Result addToShoppingCart(@RequestBody ShoppingCart shoppingCart) {
+        String cartId = shoppingCartService.getCartId( shoppingCart.getUserId());
         if (shoppingCartService.judgeExistence(shoppingCart.getItemId(), shoppingCart.getUserId())) {
             return Result.error(ResultCode.ITEM_IS_IN_SHOPPINGCART.code(), ResultCode.ITEM_IS_IN_SHOPPINGCART.message());
         }
-        if (shoppingCartService.save(shoppingCart)) {
+        if (shoppingCartService.addItem(shoppingCart.getItemId(),shoppingCart.getUserId(),cartId,shoppingCart.getPrice())) {
             return Result.success(ResultCode.SUCCESS.code(), "已成功加入购物车✪ ω ✪");
         } else {
             return Result.error(ResultCode.ERROR.code(), "加入购物车失败╥﹏╥");

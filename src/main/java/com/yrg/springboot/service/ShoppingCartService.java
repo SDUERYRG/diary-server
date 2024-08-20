@@ -8,6 +8,7 @@ import com.yrg.springboot.dto.CartItem;
 import com.yrg.springboot.entity.Address;
 import com.yrg.springboot.entity.Item;
 import com.yrg.springboot.entity.ShoppingCart;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -60,4 +61,19 @@ public interface ShoppingCartService extends IService<ShoppingCart> {
      * @Date 2024/8/15 17:47
      */
     boolean deleteItem(String itemId, String userId);
+    /**
+     * 将商品加入购物车
+     *
+     * @Author yrg
+     * @Date 2024/8/19 20:22
+     */
+
+    boolean addItem(String itemId, String userId,String cartId,double price);
+    /**
+     * 根据userId获取购物车Id
+     *
+     * @Author yrg
+     * @Date 2024/8/19 20:22
+     */
+    String getCartId(String userId);
 }

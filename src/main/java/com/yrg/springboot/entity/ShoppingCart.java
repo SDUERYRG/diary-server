@@ -26,6 +26,7 @@ public class ShoppingCart implements Serializable {
     private String itemId;    //商品id
     private String userId;    //用户id
     private Integer quantity;    //加入的数量
+    private Double price;    //商品价格
 
     @TableField(exist = false)
     private List<Item> itemList;

@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yrg.springboot.dto.CartItem;
 import com.yrg.springboot.entity.ShoppingCart;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -81,4 +78,20 @@ public interface ShoppingCartDao extends BaseMapper<ShoppingCart> {
      */
     @Delete("delete from shoppingcart where itemId = #{itemId} and userId = #{userId}")
     boolean deleteItem(String itemId, String userId);
+    /**
+     * 将商品加入购物车
+     *
+     * @Author yrg
+     * @Date 2024/8/19 20:22
+     */
+    @Insert("insert into shoppingcart (cartId, itemId, userId, quantity, price) values (#{cartId}, #{itemId}, #{userId}, 1, #{price})")
+    boolean addItem(String itemId, String userId,String cartId,double price);
+    /**
+     * 根据userId获取购物车Id
+     *
+     * @Author yrg
+     * @Date 2024/8/19 20:22
+     */
+    @Select("SELECT cartId FROM shoppingCart WHERE userId = #{userId} limit 1")
+    String getCartId(String userId);
 }

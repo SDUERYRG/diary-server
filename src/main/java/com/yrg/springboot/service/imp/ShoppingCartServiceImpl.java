@@ -95,4 +95,12 @@ public class ShoppingCartServiceImpl extends ServiceImpl<ShoppingCartDao, Shoppi
     public boolean deleteItem(String itemId, String userId) {
         return shoppingCartDao.deleteItem(itemId, userId);
     }
+    @Override
+    public boolean addItem(String itemId, String userId,String cartId,double price) {
+        return shoppingCartDao.addItem(itemId, userId,cartId,price);
+    }
+    @Override
+    public String getCartId(String userId) {
+        return shoppingCartDao.getCartId(userId);
+    }
 }

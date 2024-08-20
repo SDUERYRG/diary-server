@@ -66,5 +66,4 @@ public interface ItemDao extends BaseMapper<Item> {
      */
     @Update("update item_table set stock = stock - #{quantity} where itemId = #{itemId}")
     boolean updateItemStock(String itemId, Integer quantity);
-
 }
