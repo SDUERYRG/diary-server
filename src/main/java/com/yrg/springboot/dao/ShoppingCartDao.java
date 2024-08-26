@@ -63,7 +63,7 @@ public interface ShoppingCartDao extends BaseMapper<ShoppingCart> {
      * @Author yrg
      * @Date 2024/8/15 17:14
      */
-    @Select("SELECT sc.cartId, sc.itemId, i.item_name, sc.userId, u.user_name,sc.quantity,sc.price" +
+    @Select("SELECT sc.cartId, sc.itemId, i.item_name, sc.userId, u.user_name,sc.quantity,sc.price " +
             "FROM shoppingCart sc " +
             "JOIN item_table i ON sc.itemId = i.itemId " +
             "JOIN user_table u ON sc.userId = u.userId " +

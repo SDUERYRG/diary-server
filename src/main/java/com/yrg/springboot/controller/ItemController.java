@@ -97,7 +97,7 @@ public class ItemController {
     @PutMapping("/updateItem")
     @Transactional
     public Result updateItem(MultipartFile file, Item item) {
-        System.out.println("修改商品");
+        System.out.println("修改商品"+item);
         if (itemService.editItem(file, item))
             return Result.success(ResultCode.SUCCESS.code(), "修改成功ʕ•ᴥ•ʔ");
         else

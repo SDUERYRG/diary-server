@@ -25,7 +25,8 @@ public interface OrderDao extends BaseMapper<Order> {
      * @Author yrg
      * @Date 2022/10/7 14:38
      */
-    boolean deliverGoods(Order order);
+    @Update("update order_table set state = '已发货',deliver_time = #{date} where orderId = #{orderId}")
+    boolean deliverGoods(String orderId, Date date);
 
     /**
      * 获取订单详情及历史信息
@@ -36,7 +37,8 @@ public interface OrderDao extends BaseMapper<Order> {
     @Select("select * from order_history where orderId = #{orderId}")
     OrderHistory getOrderHistory(String orderId);
 
-    List<OrderDetail> getOrderDetail(String orderId);
+    @Select("select * from order_detail where orderNum = #{orderNum}")
+    List<OrderDetail> getOrderDetail(String orderNum);
 
     /**
      * 删除订单详情表中的信息
@@ -92,4 +94,12 @@ public interface OrderDao extends BaseMapper<Order> {
     @Select("select MONTH(orderTime) as month,sum(price) as price from order_table where YEAR(orderTime) = #{year} GROUP BY MONTH(orderTime)")
     List<SalesStatistics> itemSalesStatistics(String year);
 
+    /**
+     * 根据订单id获取订单信息
+     *
+     * @Author yrg
+     * @Date 2022/11/1 15:35
+     */
+    @Select("select * from order_table where orderId = #{orderId}")
+    Order getOrderById(String orderId);
 }

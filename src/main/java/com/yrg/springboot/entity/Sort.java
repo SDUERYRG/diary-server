@@ -21,10 +21,8 @@ public class Sort implements Serializable {
 
     @TableId(value = "sortId")
     private Integer sortId;         //id
-    private String purpose;         //用途
-    private String material;        //花材
-    private String color;           //颜色
-    private String itemId;       //鲜花id
+    private String itemId;       //物品id
+    private String sortName;       //用途
 
     @TableField(exist = false)
     private String[] purposeArray;

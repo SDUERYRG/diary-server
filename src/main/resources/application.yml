@@ -37,7 +37,7 @@ jetcache:
       keyConvertor: fastjson
       valueEncode: java
       valueDecode: java
-      host: 47.121.198.180
+      host: 121.36.102.127
       port: 6379
       poolconfig:
         maxTotal: 50  # 最大连接数

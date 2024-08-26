@@ -2,10 +2,12 @@ package com.yrg.springboot.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.yrg.springboot.dto.OrderItem;
 import com.yrg.springboot.entity.Order;
 import com.yrg.springboot.entity.OrderDetail;
 import com.yrg.springboot.entity.OrderHistory;
 import com.yrg.springboot.entity.SalesStatistics;
+import com.yrg.springboot.service.ItemService;
 import com.yrg.springboot.service.OrderService;
 import com.yrg.springboot.utils.Result;
 import com.yrg.springboot.utils.ResultCode;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +32,9 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
+    @Resource
+    private ItemService itemService;
+
     /**
      * 查询出所有订单数据
      * @Author yrg
@@ -38,6 +44,18 @@ public class OrderController {
     @Transactional(propagation = Propagation.SUPPORTS)
     public Result getAll(@PathVariable int current, @PathVariable int pageSize, Order order) {
         IPage<Order> allOrder = orderService.getPage(current, pageSize, order);
+        return new Result(true, allOrder);
+    }
+
+    /**
+     * 查询出对应用户的订单数据
+     * @Author yrg
+     * @Date 20248/13 17:41
+     */
+    @GetMapping("/userOrder/{userId}/{current}/{pageSize}")
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public Result getUserOrder(@PathVariable String userId, @PathVariable int current, @PathVariable int pageSize) {
+        IPage<Order> allOrder = orderService.getUserOrder(userId, current, pageSize);
         return new Result(true, allOrder);
     }
 
@@ -59,15 +77,32 @@ public class OrderController {
      * @Author yrg
      * @Date 20248/13 17:41
      */
-    @GetMapping("/{orderId}")
+    @GetMapping("/show/{orderId}/{orderNum}")
     @Transactional
-    public Result editShow(@PathVariable String orderId) {
-        List<OrderDetail> orderDetail = orderService.getOrderDetail(orderId);
+    public Result editShow(@PathVariable String orderId,@PathVariable String orderNum) {
+        List<OrderDetail> orderDetail = orderService.getOrderDetail(orderNum);
         OrderHistory orderHistory = orderService.getOrderHistory(orderId);
-        Order order = new Order();
+        Order order = orderService.getOrderById(orderId);
+
         order.setDetailList(orderDetail);
         order.setOrderHistory(orderHistory);
-        return Result.success(order);
+        OrderItem orderItem = new OrderItem();
+        orderItem.setOrderNum(order.getOrderNum());
+        orderItem.setOrderTime(order.getOrderTime());
+
+        List<String> itemId = new ArrayList<>();
+        List<String> itemName = new ArrayList<>();
+        for (OrderDetail detail : orderDetail) {
+            itemId.add(detail.getItemId());
+            itemName.add(itemService.getItemNameById(detail.getItemId()));
+        }
+        orderItem.setItemId(itemId);
+        orderItem.setItemName(itemName);
+        orderItem.setUserId(order.getUserId());
+        orderItem.setUserName(orderHistory.getUserName());
+        orderItem.setAddress(orderHistory.getAddress());
+        orderItem.setPrice(order.getPrice());
+        return Result.success(orderItem);
     }
 
     /**
@@ -77,10 +112,9 @@ public class OrderController {
      */
     @GetMapping("/deliverGoods/{orderId}")
     @Transactional
-    public Result deliverGoods(Order order) {
-        order.setDeliverTime(new Date());
-        order.setState("已发货");
-        if (orderService.deliverGoods(order)) {
+    public Result deliverGoods(@PathVariable String orderId) {
+        Date date = new Date();
+        if (orderService.deliverGoods(orderId, date)) {
             return Result.success(ResultCode.SUCCESS.code(), "发货成功(●'◡'●)");
         } else {
             return Result.error(ResultCode.ERROR.code(), "发货失败(＞﹏＜)");

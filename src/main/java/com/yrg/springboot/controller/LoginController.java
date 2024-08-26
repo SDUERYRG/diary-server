@@ -28,6 +28,7 @@ public class LoginController {
      * @Date 2024/7/19 17:01
      */
     @PostMapping("/login")
+    @CrossOrigin
     public Result login(@RequestBody User user, @RequestParam(required = false) String power, HttpServletRequest request) {
         power=user.getPower();
         System.out.println("开始登陆，user："+user+"power:"+power);

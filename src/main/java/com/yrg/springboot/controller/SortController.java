@@ -40,7 +40,6 @@ public class SortController {
         String purposeStr = ArrayUtils.toString(sort.getPurposeArray());
         purposeStr = purposeStr.substring(1, purposeStr.length() - 1);
         sort.setItemId(itemId);
-        sort.setPurpose(purposeStr);
         if (sortService.save(sort))
             return Result.success(ResultCode.SUCCESS.code(), "添加成功（￣︶￣）↗　");
         else
@@ -52,7 +51,6 @@ public class SortController {
     public Result updateSort(@RequestBody Sort sort) {
         String purposeStr = ArrayUtils.toString(sort.getPurposeArray());
         purposeStr = purposeStr.substring(1, purposeStr.length() - 1);
-        sort.setPurpose(purposeStr);
         if (sortService.updateById(sort))
             return Result.success(ResultCode.SUCCESS.code(), "修改成功(╹ڡ╹ )");
         else

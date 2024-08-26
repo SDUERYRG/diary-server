@@ -169,10 +169,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     public IPage<Item> itemSort(int current, int pageSize, Sort sort) {
         IPage page = new Page(current, pageSize);
         LambdaQueryWrapper<Item> lqw = new LambdaQueryWrapper<>();
-        lqw.inSql(sort.getItemName() != null && sort.getItemName() != "", Item::getItemId, "select itemId from item_table where itemName like '%" + sort.getItemName() + "%'");
-        lqw.inSql(sort.getPurpose() != null && sort.getPurpose() != "", Item::getItemId, "select itemId from item_sort where purpose like '%" + sort.getPurpose() + "%'");
-        lqw.inSql(sort.getMaterial() != null && sort.getMaterial() != "", Item::getItemId, "select itemId from item_sort where material like '%" + sort.getMaterial() + "%'");
-        lqw.inSql(sort.getColor() != null && sort.getColor() != "", Item::getItemId, "select itemId from item_sort where color like '%" + sort.getColor() + "%'");
+
         itemDao.selectPage(page, lqw);
         return page;
     }
@@ -216,5 +213,9 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
         lqw.like(Item::getItemName, keyword);
         itemDao.selectPage(page, lqw);
         return page;
+    }
+    @Override
+    public String getItemNameById(String itemId) {
+        return itemDao.getItemNameById(itemId);
     }
 }

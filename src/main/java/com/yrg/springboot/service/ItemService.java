@@ -98,4 +98,12 @@ public interface ItemService extends IService<Item> {
      * @Date 2022/10/28 13:40
      */
     boolean updateItemStock(String itemId, Integer quantity);
+
+    /**
+     * 根据id获取商品名
+     *
+     * @Author yrg
+     * @Date 2022/11/1 15:35
+     */
+    String getItemNameById(String itemId);
 }

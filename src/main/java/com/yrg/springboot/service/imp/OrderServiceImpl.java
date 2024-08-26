@@ -14,6 +14,7 @@ import com.yrg.springboot.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,7 +54,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     @Override
     public IPage<Order> getPage(int current, int pageSize, Order order) {
         IPage page = new Page(current, pageSize);
-        LambdaQueryWrapper<Order> lqw = new LambdaQueryWrapper<Order>();
+        LambdaQueryWrapper<Order> lqw = new LambdaQueryWrapper<>();
         //condition为false时查询全部
         //订单号查询
         lqw.like(order.getOrderNum() != null, Order::getOrderNum, order.getOrderNum());
@@ -63,8 +64,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     }
 
     @Override
-    public boolean deliverGoods(Order order) {
-        return orderDao.deliverGoods(order);
+    public boolean deliverGoods(String orderId, Date date) {
+        return orderDao.deliverGoods(orderId, date);
     }
 
     @Override
@@ -89,7 +90,21 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     }
 
     @Override
-    public List<OrderDetail> getOrderDetail(String orderId) {
-        return orderDao.getOrderDetail(orderId);
+    public List<OrderDetail> getOrderDetail(String orderNum) {
+        return orderDao.getOrderDetail(orderNum);
+    }
+
+    @Override
+    public Order getOrderById(String orderId) {
+        return orderDao.getOrderById(orderId);
+    }
+
+    @Override
+    public IPage<Order> getUserOrder(String userId, int current, int pageSize) {
+        IPage<Order> page = new Page<>(current, pageSize);
+        LambdaQueryWrapper<Order> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Order::getUserId, userId);
+        orderDao.selectPage(page, lqw);
+        return page;
     }
 }
