@@ -142,5 +142,18 @@ public class ItemController {
             return Result.error(ResultCode.ERROR.code(), "删除失败(* ￣︿￣)");
     }
 
-
+    /**
+     * 获取商品图片
+     * @Author yrg
+     * @Date 2024/8/29 17:16
+     */
+    @GetMapping("/getImg/{itemId}")
+    @Transactional
+    public Result getImg(@PathVariable String itemId) {
+        String img = itemService.getImg(itemId);
+        if (img != null)
+            return Result.success(img);
+        else
+            return Result.error(ResultCode.ERROR.code(), "获取图片失败(＞﹏＜)");
+    }
 }

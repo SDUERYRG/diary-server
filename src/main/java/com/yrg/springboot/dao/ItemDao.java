@@ -75,4 +75,13 @@ public interface ItemDao extends BaseMapper<Item> {
      */
     @Select("select item_name from item_table where itemId = #{itemId}")
     String getItemNameById(String itemId);
+
+    /**
+     * 根据商品id获取商品图片
+     *
+     * @Author yrg
+     * @Date 2024/8/29 17:16
+     */
+    @Select("select picture from item_table where itemId = #{itemId}")
+    String getImg(String itemId);
 }

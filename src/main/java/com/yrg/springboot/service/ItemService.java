@@ -106,4 +106,12 @@ public interface ItemService extends IService<Item> {
      * @Date 2022/11/1 15:35
      */
     String getItemNameById(String itemId);
+
+    /**
+     * 根据id获取商品图片
+     *
+     * @Author yrg
+     * @Date 2024/8/29 17:16
+     */
+    String getImg(String itemId);
 }

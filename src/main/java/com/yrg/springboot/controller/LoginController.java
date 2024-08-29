@@ -149,6 +149,7 @@ public class LoginController {
     @GetMapping("/logout")
     @Transactional
     public void logout(HttpSession session) {
+        System.out.println("退出登录");
         session.removeAttribute("user");
     }
 

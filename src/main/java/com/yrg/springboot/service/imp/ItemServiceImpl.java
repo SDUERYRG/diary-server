@@ -218,4 +218,8 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     public String getItemNameById(String itemId) {
         return itemDao.getItemNameById(itemId);
     }
+    @Override
+    public String getImg(String itemId) {
+        return itemDao.getImg(itemId);
+    }
 }
