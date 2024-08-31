@@ -8,10 +8,10 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 鲜花分类表
+ * 商品分类表
  *
  * @Author yrg
- * @Date 2022/10/14 14:01
+ * @Date 2024/8/14 14:01
  */
 @Data
 @TableName("item_sort")    //指定数据库表名

@@ -101,4 +101,15 @@ public class SortController {
         } else
             return Result.error("", "无数据");
     }
+
+    /**
+     * 根据sortId查询Item
+     * @Author yrg
+     * @Date 2024/8/31 19:51
+     */
+    @GetMapping("/selectItemBySortId/{sortId}")
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public Result selectItemBySortId(@PathVariable Integer sortId) {
+        return Result.success(sortService.selectItemBySortId(sortId));
+    }
 }

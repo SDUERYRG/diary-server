@@ -4,11 +4,13 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yrg.springboot.dao.SortDao;
+import com.yrg.springboot.entity.Item;
 import com.yrg.springboot.entity.Sort;
 import com.yrg.springboot.service.SortService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class SortServiceImpl extends ServiceImpl<SortDao, Sort> implements SortService {
@@ -61,4 +63,14 @@ public class SortServiceImpl extends ServiceImpl<SortDao, Sort> implements SortS
         return sortDao.delSortByItemId(itemId);
     }
 
+    /**
+     * 根据sortId查询Item
+     *
+     * @Author yrg
+     * @Date 2024/8/31 19:51
+     */
+    @Override
+    public List<Item> selectItemBySortId(Integer sortId) {
+        return sortDao.selectItemBySortId(sortId);
+    }
 }

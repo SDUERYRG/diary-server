@@ -3,10 +3,14 @@ package com.yrg.springboot.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yrg.springboot.entity.Item;
 import com.yrg.springboot.entity.Sort;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @Mapper
@@ -18,6 +22,7 @@ public interface SortDao extends BaseMapper<Sort> {
      * @Author yrg
      * @Date 2022/10/14 14:21
      */
+    @Select("select sortId,item_table.itemId,sort_name,item_name from item_sort, item_table where item_sort.item_id = item_table.itemId")
     Page<Sort> getAll(IPage<Sort> iPage, Sort sort);
 
     /**
@@ -48,5 +53,12 @@ public interface SortDao extends BaseMapper<Sort> {
     @Delete("delete from item_sort where itemId = #{itemId}")
     boolean delSortByItemId(String itemId);
 
-
+    /**
+     * 根据sortId查询Item
+     *
+     * @Author yrg
+     * @Date 2024/8/31 19:51
+     */
+    @Select("select item_table.itemId,item_name,picture,stock,description,sell,price,discount,score from item_table,item_sort where item_table.itemId = item_sort.item_id and sortId = #{sortId}")
+    List<Item> selectItemBySortId(Integer sortId);
 }
