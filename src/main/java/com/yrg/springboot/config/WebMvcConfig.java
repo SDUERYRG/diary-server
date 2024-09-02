@@ -78,6 +78,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }*/
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        System.out.println("启动跨域");
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")

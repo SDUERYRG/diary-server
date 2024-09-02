@@ -74,6 +74,7 @@ public class LoginController {
     @PostMapping("/userRegister")
     @Transactional
     public Result userRegister(@RequestBody User user) throws Exception {
+        System.out.println(user.getRegTime());
         if (!userService.checkCode(user.getEmail(), user.getCode()))
             return Result.error(ResultCode.CODE_ERROR.code(), ResultCode.CODE_ERROR.message());
 
@@ -134,6 +135,7 @@ public class LoginController {
      * @Date 2024/7/19 17:04
      */
     @Transactional
+    @CrossOrigin(origins = "http://localhost:4000") // 允许的源
     @GetMapping("/sendMail/{email}")
     public Result sendMail(@PathVariable String email) {
         System.out.println("发送给"+email);
